@@ -1,0 +1,31 @@
+{
+    "extends": [
+        "standard-with-typescript",
+        "prettier/@typescript-eslint",
+        "plugin:prettier/recommended"
+    ],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "rules": {
+        "prettier/prettier": "error",
+        "@typescript-eslint/naming-convention": [
+            "off"
+        ],
+        "@typescript-eslint/no-unused-vars": [
+            "off"
+        ],
+        "@typescript-eslint/strict-boolean-expressions": [
+            "off"
+        ],
+        "@typescript-eslint/method-signature-style": [
+            "off"
+        ],
+        "@typescript-eslint/no-misused-promises": [
+            "off"
+        ]
+    },
+    "plugins": [
+        "prettier"
+    ]
+}

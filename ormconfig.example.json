@@ -1,0 +1,30 @@
+[
+  {
+    "name": "default",
+    "type": "postgres",
+    "host": "default",
+    "port": 5432,
+    "username": "default",
+    "password": "default",
+    "database": "default",
+    "entities": ["./src/infra/db/postgres/entities/*.ts"],
+    "migrations": ["./src/infra/db/postgres/migrations/*.ts"],
+    "cli": {
+      "migrationsDir": "./src/infra/db/postgres/migrations"
+    }
+  },
+  {
+    "name": "test",
+    "type": "postgres",
+    "host": "default",
+    "port": 5432,
+    "username": "default",
+    "password": "default",
+    "database": "default_test",
+    "entities": ["./src/infra/db/postgres/entities/*.ts"],
+    "migrations": ["./src/infra/db/postgres/migrations/*.ts"],
+    "cli": {
+      "migrationsDir": "./src/infra/db/postgres/migrations"
+    }
+  }
+]

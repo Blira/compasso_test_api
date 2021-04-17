@@ -1,0 +1,67 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Compasso UOL Test Documentation",
+        "description": "Documentation for a API created as a test at Compasso UOL",
+        "version": "1.0.0",
+        "contact": {
+            "email": "brunoelira@gmail.com"
+        }
+    },
+
+    "paths": {
+        "/api/clients": {
+            "post": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Register client",
+                "description": "Registers a client on the application",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "sex": {
+                                        "type": "string"
+                                    },
+                                    "birthDate": {
+                                        "type": "string"
+                                    },
+                                    "age": {
+                                        "type": "number"
+                                    },
+                                    "city": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "John Doe",
+                                    "sex": "M",
+                                    "bithDate": "2021-04-17T23:49:26",
+                                    "age": 23,
+                                    "city": "107cee72-5eb3-4bd1-bd4f-95fb0a2e6790"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "invalid parameters"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        }
+    }
+}
