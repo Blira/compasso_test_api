@@ -30,7 +30,7 @@ export class RegisterCityController implements Controller {
     } catch (error) {
       return {
         statusCode: 500,
-        body: new Error('Internal server error'),
+        body: { message: 'Internal server error' },
       };
     }
   }
