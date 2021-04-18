@@ -5,4 +5,5 @@ import { RegisterClientModel } from '../../domain/usecases/client/register-clien
 export interface ClientRepository {
   insert(registerClientData: RegisterClientModel): Promise<ClientModel>;
   find(fetchClientFilter: FetchClientFilter): Promise<ClientModel[]>;
+  delete(client_id: string): Promise<void>;
 }
