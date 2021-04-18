@@ -31,4 +31,8 @@ export class PostgresClientRepository implements ClientRepository {
     const cities = await this.clientRepository.find(fetchClientFilter);
     return cities;
   }
+
+  async delete(client_id: string): Promise<void> {
+    await this.clientRepository.delete({ id: client_id });
+  }
 }
