@@ -72,7 +72,7 @@ describe('RegisterClientController', () => {
     expect(httpResponse.body.sex).toBe('M');
     expect(httpResponse.body.birthDate).toBe('2021-04-17T23:49:26');
     expect(httpResponse.body.age).toBe(23);
-    expect(httpResponse.body.city).toBe('city_id');
+    expect(httpResponse.body.city_id).toBe('city_id');
   });
 
   it('Should call registerClient.register() with correct values', async () => {

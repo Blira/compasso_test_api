@@ -1,4 +1,5 @@
-import { UserEntity } from './entities/user';
+import { ClientEntity } from './entities/client';
+
 import { PostgresDatabaseConnection } from './postgres-connection';
 
 const sut = new PostgresDatabaseConnection();
@@ -15,10 +16,10 @@ describe('PostgresDatabaseConnection', () => {
   });
 
   it('Should reconnect if postgres is down', async () => {
-    let userRepository = await sut.getRepository<UserEntity>('users');
-    expect(userRepository).toBeTruthy();
+    let clientRepository = await sut.getRepository<ClientEntity>('clients');
+    expect(clientRepository).toBeTruthy();
     await sut.disconnect();
-    userRepository = await sut.getRepository<UserEntity>('users');
-    expect(userRepository).toBeTruthy();
+    clientRepository = await sut.getRepository<ClientEntity>('clients');
+    expect(clientRepository).toBeTruthy();
   });
 });
