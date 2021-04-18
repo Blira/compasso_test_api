@@ -10,105 +10,7 @@
     },
 
     "paths": {
-        "/api/clients": {
-            "post": {
-                "tags": [
-                    "Client"
-                ],
-                "summary": "Register client",
-                "description": "Registers a client on the application",
-                "requestBody": {
-                    "content": {
-                        "application/json": {
-                            "schema": {
-                                "type": "object",
-                                "properties": {
-                                    "name": {
-                                        "type": "string"
-                                    },
-                                    "sex": {
-                                        "type": "string"
-                                    },
-                                    "birthDate": {
-                                        "type": "string"
-                                    },
-                                    "age": {
-                                        "type": "number"
-                                    },
-                                    "city": {
-                                        "type": "string"
-                                    }
-                                },
-                                "example": {
-                                    "name": "John Doe",
-                                    "sex": "M",
-                                    "bithDate": "2021-04-17T23:49:26",
-                                    "age": 23,
-                                    "city": "107cee72-5eb3-4bd1-bd4f-95fb0a2e6790"
-                                }
-                            }
-                        }
-                    }
-                },
-                "responses": {
-                    "201": {
-                        "description": "successful operation"
-                    },
-                    "400": {
-                        "description": "invalid parameters"
-                    },
-                    "500": {
-                        "description": "internal server error"
-                    }
-                }
-            },
-            "get": {
-                "tags": [
-                    "Client"
-                ],
-                "summary": "List clients",
-                "description": "List clients on the application",
-                "responses": {
-                    "200": {
-                        "description": "successful operation"
-                    },
-                    "400": {
-                        "description": "invalid parameters"
-                    },
-                    "500": {
-                        "description": "internal server error"
-                    }
-                }
-            }
-        },
-        "/api/clients/{client_id}": {
-            "delete": {
-                "tags": [
-                    "Client"
-                ],
-                "summary": "Remove a client",
-                "description": "Remove a client from the application",
-                "parameters": [
-                    {
-                        "name": "user_id",
-                        "description": "The id of a registered user",
-                        "in": "path",
-                        "required": true
-                    }
-                ],
-                "responses": {
-                    "204": {
-                        "description": "successful operation"
-                    },
-                    "400": {
-                        "description": "invalid parameters"
-                    },
-                    "500": {
-                        "description": "internal server error"
-                    }
-                }
-            }
-        },
+
         "/api/cities": {
             "post": {
                 "tags": [
@@ -157,6 +59,148 @@
                 "description": "List cities on the application",
                 "responses": {
                     "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "invalid parameters"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/api/clients": {
+            "post": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Register client",
+                "description": "Registers a client on the application",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "sex": {
+                                        "type": "string"
+                                    },
+                                    "birthDate": {
+                                        "type": "string"
+                                    },
+                                    "age": {
+                                        "type": "number"
+                                    },
+                                    "city_id": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "John Doe",
+                                    "sex": "M",
+                                    "birthDate": "2021-04-17T23:49:26",
+                                    "age": 23,
+                                    "city_id": "107cee72-5eb3-4bd1-bd4f-95fb0a2e6790"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "invalid parameters"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "List clients",
+                "description": "List clients on the application",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "invalid parameters"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/api/clients/{client_id}": {
+            "put": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Update client name",
+                "description": "Update the name of a client on the application",
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "description": "The id of a registered client",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "John Doe"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "invalid parameters"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Remove a client",
+                "description": "Remove a client from the application",
+                "parameters": [
+                    {
+                        "name": "client_id",
+                        "description": "The id of a registered client",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
                         "description": "successful operation"
                     },
                     "400": {
