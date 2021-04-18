@@ -11,20 +11,27 @@ export class RegisterClientController implements Controller {
   }
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
-    const { body: registerClientData } = httpRequest;
+    try {
+      const { body: registerClientData } = httpRequest;
 
-    const requiredParams = ['name', 'sex', 'birthDate', 'age', 'city'];
+      const requiredParams = ['name', 'sex', 'birthDate', 'age', 'city'];
 
-    for (const param of requiredParams) {
-      if (!registerClientData[param]) {
-        return missingParamError(param);
+      for (const param of requiredParams) {
+        if (!registerClientData[param]) {
+          return missingParamError(param);
+        }
       }
-    }
 
-    const newUser = await this.registerClient.register(registerClientData);
-    return {
-      statusCode: 201,
-      body: newUser,
-    };
+      const newUser = await this.registerClient.register(registerClientData);
+      return {
+        statusCode: 201,
+        body: newUser,
+      };
+    } catch (error) {
+      return {
+        statusCode: 500,
+        body: new Error('Internal server error'),
+      };
+    }
   }
 }
