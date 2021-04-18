@@ -5,7 +5,7 @@ export interface RegisterClientModel {
   sex: string;
   birthDate: Date;
   age: number;
-  city: string;
+  city_id: string;
 }
 
 export interface RegisterClient {
