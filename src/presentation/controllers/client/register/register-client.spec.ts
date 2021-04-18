@@ -52,6 +52,29 @@ describe('RegisterClientController', () => {
     expect(httpResponse.statusCode).toBe(201);
   });
 
+  it('Should return registered client on success', async () => {
+    const { sut } = createSut();
+
+    const httpRequest: HttpRequest = {
+      body: {
+        name: 'valid_name',
+        sex: 'M',
+        birthDate: '2021-04-17T23:49:26',
+        age: 23,
+        city: 'city_id',
+      },
+    };
+
+    const httpResponse = await sut.handle(httpRequest);
+    expect(httpResponse.statusCode).toBe(201);
+    // expect(httpResponse.body.id).toBeTruthy();
+    expect(httpResponse.body.name).toBe('valid_name');
+    expect(httpResponse.body.sex).toBe('M');
+    expect(httpResponse.body.birthDate).toBe('2021-04-17T23:49:26');
+    expect(httpResponse.body.age).toBe(23);
+    expect(httpResponse.body.city).toBe('city_id');
+  });
+
   it('Should call registerClient.register() with correct values', async () => {
     const { sut, registerClientStub } = createSut();
 
@@ -148,5 +171,28 @@ describe('RegisterClientController', () => {
 
     const httpResponse = await sut.handle(httpRequest);
     expect(httpResponse.statusCode).toBe(400);
+  });
+
+  it('Should throw if RegisterClient throws', async () => {
+    const { sut, registerClientStub } = createSut();
+
+    jest
+      .spyOn(registerClientStub, 'register')
+      .mockReturnValueOnce(
+        new Promise((resolve, reject) => reject(new Error())),
+      );
+
+    const httpRequest: HttpRequest = {
+      body: {
+        name: 'valid_name',
+        sex: 'M',
+        birthDate: '2021-04-17T23:49:26',
+        age: 23,
+        city: 'city_id',
+      },
+    };
+
+    const httpResponse = await sut.handle(httpRequest);
+    expect(httpResponse.statusCode).toBe(500);
   });
 });
