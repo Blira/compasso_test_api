@@ -22,10 +22,10 @@ export class RegisterClientController implements Controller {
         }
       }
 
-      const newUser = await this.registerClient.register(registerClientData);
+      const newClient = await this.registerClient.register(registerClientData);
       return {
         statusCode: 201,
-        body: newUser,
+        body: newClient,
       };
     } catch (error) {
       return {

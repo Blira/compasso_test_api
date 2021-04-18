@@ -35,7 +35,7 @@ const createSut = (): SutType => {
 };
 
 describe('RegisterClientController', () => {
-  it('Should return 200 on success', async () => {
+  it('Should return 201 on success', async () => {
     const { sut } = createSut();
 
     const httpRequest: HttpRequest = {
