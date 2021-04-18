@@ -10,7 +10,7 @@ export class PostgresClientRepository implements ClientRepository {
       'clients',
     );
 
-    const newClient = clientRepository.create();
+    const newClient = clientRepository.create(registerClientData);
     await clientRepository.save(newClient);
     return newClient;
   }
