@@ -61,6 +61,7 @@ export class CreateClientTable1618707024916 implements MigrationInterface {
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
+    await queryRunner.query('DROP TYPE sexEnum;');
     await queryRunner.dropTable('clients');
   }
 }
