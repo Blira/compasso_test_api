@@ -44,7 +44,7 @@ describe('RegisterClientController', () => {
         sex: 'M',
         birthDate: '10-10-1998',
         age: 23,
-        city: 'city_id',
+        city_id: 'city_id',
       },
     };
 
@@ -61,7 +61,7 @@ describe('RegisterClientController', () => {
         sex: 'M',
         birthDate: '2021-04-17T23:49:26',
         age: 23,
-        city: 'city_id',
+        city_id: 'city_id',
       },
     };
 
@@ -86,7 +86,7 @@ describe('RegisterClientController', () => {
         sex: 'M',
         birthDate: '10-10-1998',
         age: 23,
-        city: 'city_id',
+        city_id: 'city_id',
       },
     };
     await sut.handle(httpRequest);
@@ -101,7 +101,7 @@ describe('RegisterClientController', () => {
         sex: 'M',
         birthDate: '10-10-1998',
         age: 23,
-        city: 'city_id',
+        city_id: 'city_id',
       },
     };
 
@@ -117,7 +117,7 @@ describe('RegisterClientController', () => {
         name: 'valid_name',
         birthDate: '10-10-1998',
         age: 23,
-        city: 'city_id',
+        city_id: 'city_id',
       },
     };
 
@@ -133,7 +133,7 @@ describe('RegisterClientController', () => {
         name: 'valid_name',
         sex: 'M',
         age: 23,
-        city: 'city_id',
+        city_id: 'city_id',
       },
     };
 
@@ -149,7 +149,7 @@ describe('RegisterClientController', () => {
         name: 'valid_name',
         sex: 'M',
         birthDate: '10-10-1998',
-        city: 'city_id',
+        city_id: 'city_id',
       },
     };
 
@@ -157,7 +157,7 @@ describe('RegisterClientController', () => {
     expect(httpResponse.statusCode).toBe(400);
   });
 
-  it('Should return 400 if city is not provided', async () => {
+  it('Should return 400 if city_id is not provided', async () => {
     const { sut } = createSut();
 
     const httpRequest: HttpRequest = {
@@ -188,7 +188,7 @@ describe('RegisterClientController', () => {
         sex: 'M',
         birthDate: '2021-04-17T23:49:26',
         age: 23,
-        city: 'city_id',
+        city_id: 'city_id',
       },
     };
 

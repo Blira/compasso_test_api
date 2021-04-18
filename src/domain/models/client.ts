@@ -4,5 +4,5 @@ export interface ClientModel {
   sex: string;
   birthDate: Date;
   age: number;
-  city: string;
+  city_id: string;
 }

@@ -14,7 +14,7 @@ export class RegisterClientController implements Controller {
     try {
       const { body: registerClientData } = httpRequest;
 
-      const requiredParams = ['name', 'sex', 'birthDate', 'age', 'city'];
+      const requiredParams = ['name', 'sex', 'birthDate', 'age', 'city_id'];
 
       for (const param of requiredParams) {
         if (!registerClientData[param]) {
