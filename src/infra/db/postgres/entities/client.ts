@@ -4,8 +4,11 @@ import {
   Entity,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
 import { ClientModel } from '../../../../domain/models/client';
+import { CityEntity } from './city';
 
 @Entity('clients')
 export class ClientEntity implements ClientModel {
@@ -22,7 +25,11 @@ export class ClientEntity implements ClientModel {
   birthDate: Date;
 
   @Column()
-  city: string;
+  city_id: string;
+
+  @ManyToOne(() => CityEntity)
+  @JoinColumn({ name: 'city_id' })
+  city: CityEntity;
 
   @Column()
   sex: string;
