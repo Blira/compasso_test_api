@@ -61,6 +61,111 @@
                         "description": "internal server error"
                     }
                 }
+            },
+            "get": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "List clients",
+                "description": "List clients on the application",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "invalid parameters"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/api/clients/{client_id}": {
+            "delete": {
+                "tags": [
+                    "Client"
+                ],
+                "summary": "Remove a client",
+                "description": "Remove a client from the application",
+                "parameters": [
+                    {
+                        "name": "user_id",
+                        "description": "The id of a registered user",
+                        "in": "path",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "invalid parameters"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            }
+        },
+        "/api/cities": {
+            "post": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "Register city",
+                "description": "Registers a city on the application",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type": "string"
+                                    },
+                                    "state": {
+                                        "type": "string"
+                                    }
+                                },
+                                "example": {
+                                    "name": "Recife",
+                                    "state": "PE"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "invalid parameters"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "City"
+                ],
+                "summary": "List cities",
+                "description": "List cities on the application",
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    },
+                    "400": {
+                        "description": "invalid parameters"
+                    },
+                    "500": {
+                        "description": "internal server error"
+                    }
+                }
             }
         }
     }
