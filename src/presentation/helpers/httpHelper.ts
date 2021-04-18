@@ -29,6 +29,6 @@ export const missingParamError = (param: string): HttpResponse => ({
 });
 
 export const invalidParamError = (param: string): HttpResponse => ({
-  statusCode: 400,
+  statusCode: 422,
   body: new InvalidParamError(param),
 });

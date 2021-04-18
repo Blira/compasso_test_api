@@ -24,7 +24,11 @@ const createSut = (): SutType => {
 describe('RemoveClientController', () => {
   it('Should return 204 on success', async () => {
     const { sut } = createSut();
-    const httpResponse = await sut.handle({});
+    const httpResponse = await sut.handle({
+      params: {
+        client_id: 'valid_id',
+      },
+    });
     expect(httpResponse.statusCode).toBe(204);
   });
 
@@ -39,7 +43,7 @@ describe('RemoveClientController', () => {
       },
     };
     await sut.handle(httpRequest);
-    expect(spyFetch).toHaveBeenCalledWith(httpRequest.query.client_id);
+    expect(spyFetch).toHaveBeenCalledWith(httpRequest.params.client_id);
   });
 
   it('Should throw if RemoveClient throws', async () => {

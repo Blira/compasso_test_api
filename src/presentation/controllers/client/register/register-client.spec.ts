@@ -173,6 +173,23 @@ describe('RegisterClientController', () => {
     expect(httpResponse.statusCode).toBe(400);
   });
 
+  it('Should return 422 if sex is not M or F', async () => {
+    const { sut } = createSut();
+
+    const httpRequest: HttpRequest = {
+      body: {
+        name: 'valid_name',
+        birthDate: '10-10-1998',
+        sex: 'G',
+        age: 23,
+        city_id: 'city_id',
+      },
+    };
+
+    const httpResponse = await sut.handle(httpRequest);
+    expect(httpResponse.statusCode).toBe(422);
+  });
+
   it('Should throw if RegisterClient throws', async () => {
     const { sut, registerClientStub } = createSut();
 

@@ -1,5 +1,10 @@
 import { RegisterClient } from '../../../../domain/usecases/client/register-client';
-import { missingParamError } from '../../../helpers/httpHelper';
+import {
+  created,
+  invalidParamError,
+  missingParamError,
+  serverError,
+} from '../../../helpers/httpHelper';
 import { Controller } from '../../../protocols/controller';
 import { HttpRequest, HttpResponse } from '../../../protocols/http';
 
@@ -22,16 +27,13 @@ export class RegisterClientController implements Controller {
         }
       }
 
+      if (!['M', 'F'].includes(registerClientData.sex)) {
+        return invalidParamError(registerClientData.sex);
+      }
       const newClient = await this.registerClient.register(registerClientData);
-      return {
-        statusCode: 201,
-        body: newClient,
-      };
+      return created(newClient);
     } catch (error) {
-      return {
-        statusCode: 500,
-        body: { message: 'Internal server error' },
-      };
+      return serverError();
     }
   }
 }

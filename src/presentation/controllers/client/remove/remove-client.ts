@@ -1,4 +1,5 @@
 import { RemoveClient } from '../../../../domain/usecases/client/remove-client';
+import { noContent, serverError } from '../../../helpers/httpHelper';
 import { Controller } from '../../../protocols/controller';
 import { HttpRequest, HttpResponse } from '../../../protocols/http';
 
@@ -12,18 +13,12 @@ export class RemoveClientController implements Controller {
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
       const {
-        params: { id },
+        params: { client_id },
       } = httpRequest;
-      await this.removeClient.remove(id);
-      return {
-        statusCode: 204,
-        body: {},
-      };
+      await this.removeClient.remove(client_id);
+      return noContent();
     } catch (error) {
-      return {
-        statusCode: 500,
-        body: { message: 'Internal server error' },
-      };
+      return serverError();
     }
   }
 }
