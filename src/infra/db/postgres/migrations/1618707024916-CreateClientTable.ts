@@ -30,7 +30,6 @@ export class CreateClientTable1618707024916 implements MigrationInterface {
           {
             name: 'city_id',
             type: 'uuid',
-            isUnique: true,
           },
           {
             name: 'birthDate',
